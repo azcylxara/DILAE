@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicações</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="publicacoes.css">
+    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>Publicações</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar publicações...">
+                <button id="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container">
+        <!-- Filtros -->
+        <section class="filters">
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label for="genreFilter">Gênero</label>
+                    <select id="genreFilter">
+                        <option value="all">Todos os gêneros</option>
+                        <option value="fiction">Ficção</option>
+                        <option value="non-fiction">Não-ficção</option>
+                        <option value="science">Ciência</option>
+                        <option value="history">História</option>
+                        <option value="fantasy">Fantasia</option>
+                        <option value="biography">Biografia</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="yearFilter">Ano</label>
+                    <select id="yearFilter">
+                        <option value="all">Todos os anos</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sortFilter">Ordenar por</label>
+                    <select id="sortFilter">
+                        <option value="title">Título (A-Z)</option>
+                        <option value="year">Ano (mais recente)</option>
+                        <option value="author">Autor (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de Livros -->
+        <section class="books-section">
+            <div class="books-header">
+                <h2>Minhas Publicações</h2>
+                <div class="books-count" id="booksCount">Exibindo 8 publicações</div>
+            </div>
+            <div class="books-grid" id="booksGrid">
+                <!-- Livros serão inseridos aqui via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Detalhes -->
+    <div class="modal-overlay" id="bookModal">
+        <div class="modal">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- Conteúdo do modal será inserido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+  <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="mapbox"></div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39885630163608703!2d-48.46026594357269!3d-1.    437298296395028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48c12e611982f%3A0x5ace4d45a86e975d!2sIFPA%20-%20Instituto%20Federal%20de%20Educa%C3%A7%C3%A3o%2C%20Ci%C3%AAncia%20e%20Tecnologia%20do%20Par%C3%A1%2C%20Campus%20Bel%C3%A9m!5e0!3m2!1spt-BR!2sbr!4v1724461632083!5m2!1spt-BR!2sbr"  width="300px" height="210" style="border:0;" allowfullscreen="" loading="lazy"    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <p style="color: #fff;">Instituto Federal do Pará - Campus Belém</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/dilaeifpa/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>MAIS INFORMAÇÕES</h3>
+                    <a href="index.html">DILAE</a>
+                    <a href="#axes">Quero participar</a>
+                    <a href="gipace.html">Especialização</a>
+                    <a href="https://www.instagram.com/dilaeifpa/">Redes sociais</a>
+                </div>
+                <div class="footer-column">
+                    <h3>CONTATO</h3>
+                    <p>GIPACE: gipaceifpa@gmail.com</p>
+                    <p>ESPECIALIZAÇÂO: esp.lafd@ifpa.edu.br</p>
+                    <p>DILAE: dilaeifpa@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="publicacoes.js"></script>
+</body>
+</html>
