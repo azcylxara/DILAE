@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicações</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #8e0404;
+            --secondary-color: #54bb7b;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #1a252f;
+            --gray-color: #7f8c8d;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .search-bar {
+            display: flex;
+            width: 300px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Main Content */
+        main {
+            padding: 30px 0;
+            min-height: calc(100vh - 180px);
+        }
+
+        /* Filtros */
+        .filters {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 180px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .filter-group select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+
+        /* Grid de Livros */
+        .books-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .books-header h2 {
+            color: var(--primary-color);
+        }
+
+        .books-count {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .book-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .book-cover {
+            height: 280px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book-placeholder {
+            color: var(--gray-color);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .book-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+
+        .book-info {
+            padding: 20px;
+        }
+
+        .book-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            height: 50px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .book-author {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--gray-color);
+        }
+
+        .book-year {
+            font-weight: 600;
+        }
+
+        .book-genre {
+            background-color: #e8f4fc;
+            color: var(--secondary-color);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Modal de Detalhes */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-color);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        .modal-book-cover {
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-book-cover img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-book-details {
+            flex: 1;
+        }
+
+        .modal-book-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .modal-book-author {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .modal-book-description {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .modal-book-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-edit {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #ffebee;
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #8e0404;
+            color: white;
+            padding: 35px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #54bb7b;
+        }
+
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .add-book-btn {
+                margin-left: 0;
+                justify-content: center;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .modal-book-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+            
+            .book-cover {
+                height: 220px;
+            }
+            
+            .modal-book-meta {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>Publicações</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar publicações...">
+                <button id="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container">
+        <!-- Filtros -->
+        <section class="filters">
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label for="genreFilter">Gênero</label>
+                    <select id="genreFilter">
+                        <option value="all">Todos os gêneros</option>
+                        <option value="fiction">Ficção</option>
+                        <option value="non-fiction">Não-ficção</option>
+                        <option value="science">Ciência</option>
+                        <option value="history">História</option>
+                        <option value="fantasy">Fantasia</option>
+                        <option value="biography">Biografia</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="yearFilter">Ano</label>
+                    <select id="yearFilter">
+                        <option value="all">Todos os anos</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sortFilter">Ordenar por</label>
+                    <select id="sortFilter">
+                        <option value="title">Título (A-Z)</option>
+                        <option value="year">Ano (mais recente)</option>
+                        <option value="author">Autor (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de Livros -->
+        <section class="books-section">
+            <div class="books-header">
+                <h2>Minhas Publicações</h2>
+                <div class="books-count" id="booksCount">Exibindo 8 publicações</div>
+            </div>
+            <div class="books-grid" id="booksGrid">
+                <!-- Livros serão inseridos aqui via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Detalhes -->
+    <div class="modal-overlay" id="bookModal">
+        <div class="modal">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- Conteúdo do modal será inserido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Voltar</a>
+                <a href="#">Mais informações sobre o evento</a>
+                <a href="#">Especialização</a>
+                <a href="#">Ir para o ínicio da página</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Dados das publicações
+        const booksData = [
+            {
+                id: 1,
+                title: "A Sutil Arte de Ligar o F*da-se",
+                author: "Mark Manson",
+                year: 2016,
+                genre: "non-fiction",
+                genreLabel: "Não-ficção",
+                description: "Um guia contra-intuitivo para viver uma vida boa, desafiando a ideia de que devemos buscar a felicidade constantemente e, em vez disso, aceitar as limitações e problemas da vida.",
+                pages: 224,
+                publisher: "Intrínseca",
+                isbn: "978-85-510-0245-5",
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1561317315i/28257707.jpg"
+            },
+            {
+                id: 2,
+                title: "O Hobbit",
+                author: "J.R.R. Tolkien",
+                year: 1937,
+                genre: "fantasy",
+                genreLabel: "Fantasia",
+                description: "A história de Bilbo Bolseiro, um hobbit que vive uma vida pacata até ser recrutado pelo mago Gandalf para uma aventura épica para recuperar um tesouro guardado por um dragão.",
+                pages: 310,
+                publisher: "HarperCollins",
+                isbn: "978-0-261-10295-3",
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1546071216i/5907.jpg"
+            },
+            {
+                id: 3,
+                title: "jhktfh",
+                author: "Yuval Noah Harari",
+                year: 2011,
+                genre: "history",
+                genreLabel: "História",
+                description: "Uma exploração da história da humanidade, desde a evolução do Homo sapiens na Idade da Pedra até as revoluções políticas e tecnológicas do século XXI.",
+                pages: 443,
+                publisher: "L&PM",
+                isbn: "978-85-254-3318-0",
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1595674533i/23692271.jpg"
+            },
+            {
+                id: 4,
+                title: "ANAIS - I DIÁLOGOS INTERCULTURAIS EM LINGUAGENS, ARTES E EDUCAÇÃO",
+                author: "George Orwell",
+                year: 1949,
+                genre: "fiction",
+                genreLabel: "Ficção",
+                description: "Um romance distópico que explora temas de totalitarismo, vigilância em massa e manipulação da verdade, seguindo a vida de Winston Smith em um regime opressivo.",
+                pages: 328,
+                publisher: "Companhia das Letras",
+                isbn: "978-85-359-2505-3",
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg"
+            },
+            {
+                id: 5,
+                title: "Cosmos",
+                author: "Carl Sagan",
+                year: 1980,
+                genre: "science",
+                genreLabel: "Ciência",
+                description: "Uma jornada através de 15 bilhões de anos de evolução cósmica, explorando a relação entre a humanidade e o universo, desde as menores partículas até as maiores galáxias.",
+                pages: 365,
+                publisher: "Editora Francisco Alves",
+                isbn: "978-85-265-0115-2",
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1388620656i/55030.jpg"
+            },
+            {
+                id: 6,
+                title: "ANAIS II E III DIÁLOGOS INTERCULTURAIS EM LINGUAGENS, ARTES E EDUCAÇÃO",
+                author: "Diversos autores",
+                year: 2025,
+                genre: "biography",
+                description: "Os Diálogos Interculturais em Linguagens, Artes e Educação – DILAE – são eventos anuais promovidos e organizados pelo Grupo Interdisciplinar de Pesquisa em Artes, Cultura e Educação – GIPACE/IFPA – e pelo Curso de Especializações em Linguagens e Artes na Formação Docente do IFPA/Campus Belém, em parceria com o Grupo de Pesquisa Mulheres Amazônidas e Latino-americanas na Literatura e nas Artes – MALALAS/UFPA. O I DILAE ocorreu nos dias 06 e 07 de dezembro de 2022, com o tema Educação e Saberes na Amazônia: Cenários e Perspectivas nas Linguagens e nas Artes, com a realização de palestras, mesas redondas, mine-cursos e sessões de comunicação oral. A partir da primeira edição, o evento vem se consolidando como uma ação integrada, sempre com o objetivo de promover a discussão e interação de conhecimentos e saberes acerca de fenômenos relacionados às Linguagens, às Artes e à Educação, de forma interdisciplinar, no contexto pan-amazônico. O GIPACE, criado em 2012 agrega professores-pesquisadores das áreas de Letras, Artes e Pedagogia do Instituto Federal de Educação, Ciência e Tecnologia do Pará e atua em caráter interdisciplinar na promoção de ações de ensino, pesquisa e extensão, voltadas para produções acadêmicas, artísticas e científicas, privilegiando a pesquisa em linguagens e suas interfaces com a educação tecnológica e a valorização dos saberes amazônicos. Por sua atuação, por suas produções acadêmicas, científicas e artísticas, e pelo desenvolvimento de ações inovadoras no âmbito do ensino, da pesquisa e da extensão, o GIPACE, grupo certificado pela instituição e cadastrado no CNPq, é um grupo que vem se destacando no cenário atual da pesquisa em linguagens no Pará. Esse grupo propôs entre outras ações a criação dos cursos de especialização lato sensu em Saberes, Linguagens e Práticas Educacionais na Amazônia (2017) e Linguagens e Artes na Formação Docente (2021), cursos vigentes no Instituto Federal de Educação, Ciência e Tecnologia do Pará/Campus Belém. O intuito do DILAE é abordar uma educação intercultural crítica, na perspectiva de criar um novo olhar nos campos educacionais brasileiro e amazônico, por meio de diálogos horizontais que articulem igualdade e distinção entre várias concepções de linguagens, artes e cultura. Superando qualquer relação de conhecimento ou entendimento que crie hierarquias essenciais à sua complexa construção na educação escolar e trazendo para esses diálogos formas de conhecimento que foram ocultadas pelo nortecentrismo, pois considera-se que é fundamental indagar sobre o legado oficial da civilização por meio do questionamento do currículo e do repertório fixo existentes nas escolas, e consequentemente, transgredir aos rituais escolares que o reproduzem. É nesta perspectiva intercultural que nasce o DILAE, por isso, os textos que integram essa coletânea buscam dialogar com a comunidade acadêmica do IFPA, da UFPA, do Pará, da Amazônia e do Brasil, propondo olhares descolonizadores sobre o ensino de Linguagens e Artes produzidos por aqui. O II DILAE – ocorrido de 5 a 7 de dezembro 2023 – discutiu Concepções e práticas interculturais no Ensino de Linguagens e Artes e o III DILAE – de 29 de outubro a 1 de novembro 2024- trouxe como temática Criação, Imaginários e Discursos na Amazônia. Neste E-book encontram-se reunidos textos produzidos nas duas edições apresentados como resultados das pesquisas concluídas ou em andamento desenvolvidas entre os anos 2023-2024.",
+                pages: 448,
+                publisher: "Itacaiúnas",
+                isbn: "978-85-9535-326-8(E-book/PDF)",
+                cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOEecFeT9dsDiBSWyaCT5ePIzVPX6i0voSFQ&s"
+            },
+            {
+                id: 7,
+                title: "O Nome do Vento",
+                author: "Patrick Rothfuss",
+                year: 2007,
+                genre: "fantasy",
+                genreLabel: "Fantasia",
+                description: "A história de Kvothe, um personagem lendário que relata sua vida desde a infância numa trupe de artistas itinerantes até seus anos na Universidade.",
+                pages: 662,
+                publisher: "Editora Arqueiro",
+                isbn: "978-85-8041-019-4",
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1515589515i/186074.jpg"
+            },
+            {
+                id: 8,
+                title: "Uma Breve História do Tempo",
+                author: "Stephen Hawking",
+                year: 1988,
+                genre: "science",
+                genreLabel: "Ciência",
+                description: "Um livro de divulgação científica que explora conceitos fundamentais da cosmologia, incluindo o Big Bang, buracos negros e a natureza do tempo.",
+                pages: 256,
+                publisher: "Bantam Books",
+                isbn: "978-0-553-38016-3",
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1333578746i/3869.jpg"
+            }
+        ];
+
+        // Elementos DOM
+        const booksGrid = document.getElementById('booksGrid');
+        const booksCount = document.getElementById('booksCount');
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const genreFilter = document.getElementById('genreFilter');
+        const yearFilter = document.getElementById('yearFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const bookModal = document.getElementById('bookModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.getElementById('closeModal');
+        const addBookBtn = document.getElementById('addBookBtn');
+
+        // Estado dos filtros
+        let currentFilter = {
+            genre: 'all',
+            year: 'all',
+            sort: 'title',
+            search: ''
+        };
+
+        // Inicializar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBooks();
+            setupEventListeners();
+        });
+
+        // Configurar listeners de eventos
+        function setupEventListeners() {
+            genreFilter.addEventListener('change', (e) => {
+                currentFilter.genre = e.target.value;
+                renderBooks();
+            });
+
+            yearFilter.addEventListener('change', (e) => {
+                currentFilter.year = e.target.value;
+                renderBooks();
+            });
+
+            sortFilter.addEventListener('change', (e) => {
+                currentFilter.sort = e.target.value;
+                renderBooks();
+            });
+
+            searchButton.addEventListener('click', () => {
+                currentFilter.search = searchInput.value.toLowerCase();
+                renderBooks();
+            });
+
+            searchInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') {
+                    currentFilter.search = searchInput.value.toLowerCase();
+                    renderBooks();
+                }
+            });
+
+            closeModal.addEventListener('click', () => {
+                bookModal.classList.remove('active');
+            });
+
+            bookModal.addEventListener('click', (e) => {
+                if (e.target === bookModal) {
+                    bookModal.classList.remove('active');
+                }
+            });
+
+        }
+
+        // Filtrar e ordenar livros
+        function filterAndSortBooks() {
+            let filteredBooks = [...booksData];
+
+            // Aplicar filtro de gênero
+            if (currentFilter.genre !== 'all') {
+                filteredBooks = filteredBooks.filter(book => book.genre === currentFilter.genre);
+            }
+
+            // Aplicar filtro de ano
+            if (currentFilter.year !== 'all') {
+                filteredBooks = filteredBooks.filter(book => book.year.toString() === currentFilter.year);
+            }
+
+            // Aplicar filtro de busca
+            if (currentFilter.search) {
+                filteredBooks = filteredBooks.filter(book => 
+                    book.title.toLowerCase().includes(currentFilter.search) || 
+                    book.author.toLowerCase().includes(currentFilter.search) ||
+                    book.genreLabel.toLowerCase().includes(currentFilter.search)
+                );
+            }
+
+            // Ordenar livros
+            filteredBooks.sort((a, b) => {
+                switch(currentFilter.sort) {
+                    case 'title':
+                        return a.title.localeCompare(b.title);
+                    case 'year':
+                        return b.year - a.year;
+                    case 'author':
+                        return a.author.localeCompare(b.author);
+                    default:
+                        return 0;
+                }
+            });
+
+            return filteredBooks;
+        }
+
+        // Renderizar livros na grid
+        function renderBooks() {
+            const filteredBooks = filterAndSortBooks();
+            
+            booksGrid.innerHTML = '';
+            
+            filteredBooks.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.className = 'book-card';
+                bookCard.dataset.id = book.id;
+                
+                const coverContent = book.cover ? 
+                    `<img src="${book.cover}" alt="${book.title}" onerror="this.onerror=null; this.src='';">` :
+                    `<div class="book-placeholder">
+                        <i class="fas fa-book"></i>
+                        <p>Capa não disponível</p>
+                    </div>`;
+                
+                bookCard.innerHTML = `
+                    <div class="book-cover">
+                        ${coverContent}
+                    </div>
+                    <div class="book-info">
+                        <div class="book-title">${book.title}</div>
+                        <div class="book-author">${book.author}</div>
+                        <div class="book-meta">
+                            <div class="book-year">${book.year}</div>
+                            <div class="book-genre">${book.genreLabel}</div>
+                        </div>
+                    </div>
+                `;
+                
+                bookCard.addEventListener('click', () => openBookModal(book.id));
+                booksGrid.appendChild(bookCard);
+            });
+            
+            booksCount.textContent = `Exibindo ${filteredBooks.length} publicação${filteredBooks.length !== 1 ? 'ões' : ''}`;
+        }
+
+        // Abrir modal com detalhes do livro
+        function openBookModal(bookId) {
+            const book = booksData.find(b => b.id === bookId);
+            
+            if (!book) return;
+            
+            modalContent.innerHTML = `
+                <div class="modal-book-cover">
+                    ${book.cover ? `<img src="${book.cover}" alt="${book.title}">` : 
+                    `<div class="book-placeholder">
+                        <i class="fas fa-book"></i>
+                        <p>Capa não disponível</p>
+                    </div>`}
+                </div>
+                <div class="modal-book-details">
+                    <h2 class="modal-book-title">${book.title}</h2>
+                    <h3 class="modal-book-author">${book.author}</h3>
+                    <p class="modal-book-description">${book.description}</p>
+                    
+                    <div class="modal-book-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Ano de Publicação</span>
+                            <span class="meta-value">${book.year}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Gênero</span>
+                            <span class="meta-value">${book.genreLabel}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Páginas</span>
+                            <span class="meta-value">${book.pages}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Editora</span>
+                            <span class="meta-value">${book.publisher}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">ISBN</span>
+                            <span class="meta-value">${book.isbn}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="modal-btn btn-edit">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="modal-btn btn-delete">
+                            <i class="fas fa-trash"></i> Remover
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            
+            bookModal.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header e Menu */
+        header {
+            background-color: #8e0404;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 120px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ecf0f1;
+        }
+
+        .menu-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .menu-nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-nav a:hover {
+            background-color: #ffffff;
+            color: #8e0404;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Seção principal */
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(178deg, #dfaa5a  0%, #54bb7b 100%);
+            color: white;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Seção de inscrição */
+        .inscricao {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .inscricao h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .inscricao h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #8e0404;
+            border-radius: 2px;
+        }
+
+        .opcoes-inscricao {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .opcao {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .opcao:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+            border-color: #8e0404;
+        }
+
+        .opcao h3 {
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .opcao p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .btn-inscricao {
+            display: inline-block;
+            background-color: #8e0404;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-inscricao:hover {
+            background-color: #54bb7b;
+            transform: scale(1.05);
+        }
+
+        /* Seção do carrossel */
+        .carrossel-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .carrossel-container h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .carrossel-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #8e0404;
+            border-radius: 2px;
+        }
+
+        .carrossel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .carrossel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .bloco-tematico {
+            flex: 0 0 25%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .bloco-content {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px 20px;
+            height: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .bloco-content:hover {
+            background-color: #e8f4fc;
+            transform: translateY(-5px);
+        }
+
+        .bloco-icon {
+            font-size: 2.5rem;
+            color:  #8e0404;
+            margin-bottom: 15px;
+        }
+
+        .bloco-tematico h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .carrossel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .carrossel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #bdc3c7;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .carrossel-dot.active {
+            background-color: #3498db;
+        }
+
+        /* Seção cronograma */
+        .cronograma {
+            background: linear-gradient(135deg, #8e0404 0%, #463d42 100%);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 15px rgb(255, 249, 249);
+        }
+
+        .cronograma h2 {
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .cronograma h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        .cronograma-item {
+            display: flex;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cronograma-data {
+            flex: 0 0 150px;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .cronograma-descricao {
+            flex: 1;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        
+        footer {
+            background-color: #8e0404;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-column p, .footer-column a {
+            color: white;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #95a5a6;
+            font-size: 14px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .bloco-tematico {
+                flex: 0 0 33.333%;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-nav {
+                position: fixed;
+                top: 140px;
+                left: -100%;
+                width: 100%;
+                background-color: #8e0404;
+                padding: 20px;
+                transition: left 0.3s ease;
+                z-index: 99;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .menu-nav.active {
+                left: 0;
+            }
+            
+            .menu-nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .opcoes-inscricao {
+                gap: 20px;
+            }
+            
+            .bloco-tematico {
+                flex: 0 0 50%;
+            }
+            
+            .cronograma-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .inscricao, .cronograma, .carrossel-container {
+                padding: 30px 20px;
+            }
+            
+            .opcao {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .bloco-tematico {
+                flex: 0 0 100%;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+        }
