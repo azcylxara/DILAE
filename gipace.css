@@ -92,10 +92,10 @@ h1, h2, h3, h4 {
 /* ===== HEADER ===== */
 header {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-    position: fixed;
+    position: fixed; 
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 1200;
     box-shadow: var(--shadow-md);
     backdrop-filter: blur(10px);
     background-color: rgba(5, 157, 96, 0.95);
@@ -112,6 +112,7 @@ header {
 .logo img {
     max-height: 120px;
     width: auto;
+    display: flex;
     transition: transform var(--transition-normal);
 }
 
@@ -190,6 +191,7 @@ header {
 }
 
 .nav-link::after {
+    color: var(--white);
     content: '';
     position: absolute;
     bottom: 0;
@@ -242,11 +244,10 @@ header {
 /* ===== LANDING PAGE ===== */
 .landing-page {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('Imagens/fundo-gipace.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+                url('Gemini_Generated_Image_q4rbr8q4rbr8q4rb.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -365,6 +366,7 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     margin-top: 50px;
+    align-items: start;
 }
 
 .card {
@@ -373,7 +375,7 @@ header {
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: var(--transition-normal);
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
@@ -419,6 +421,7 @@ header {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    align-items: start;
 }
 
 .card-text {
@@ -445,6 +448,53 @@ header {
     position: absolute;
     left: 0;
     color: var(--primary-color);
+}
+
+/* Limita o container de texto a uma altura fixa e esconde o excesso */
+.card-text-container {
+    max-height: 150px; /* Altura que você desejar para o card fechado */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease; /* Transição suave ao abrir */
+}
+
+/* Efeito de "sumir aos poucos" no final do texto quando fechado */
+.card-text-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(transparent, white);
+}
+
+/* Quando o card estiver aberto, removemos a limitação e o efeito */
+.card.expanded .card-text-container {
+    max-height: 1000px; /* Um valor alto o suficiente para mostrar tudo */
+}
+
+.card.expanded .card-text-container::after {
+    display: none;
+}
+
+/* Estilização do Botão */
+.btn-read-more {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto; /* Garante que o botão fique sempre no fundo */
+    align-self: flex-start;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-read-more:hover {
+    background: var(--primary-color);
+    color: white;
 }
 
 /* ===== TABELAS ===== */
@@ -690,7 +740,7 @@ footer {
     transition: color 0.3s;  
 }
 
-/* gipace.css - Adicionar estas regras ao final do arquivo */
+
 
 /* ===== ANIMAÇÕES ===== */
 @keyframes fadeInUp {

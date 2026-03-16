@@ -1,4 +1,4 @@
-// script.js - Código JavaScript para o site GIPACE
+// JavaScript para o site GIPACE
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Site GIPACE carregado e pronto!');
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setupTableResponsive();
         setupIntersectionObserver();
         updateFooterYear();
+        setupReadMore();
     }
     
     // 1. MENU MOBILE RESPONSIVO
@@ -635,6 +636,25 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.querySelector('.producoes-grid').appendChild(loadMoreBtn);
     }
+
+    // Botão "Ler mais" para cards
+    function setupReadMore() {
+        const buttons = document.querySelectorAll('.btn-read-more');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.card');
+                card.classList.toggle('expanded');
+                
+                // Muda o texto do botão
+                if (card.classList.contains('expanded')) {
+                    this.textContent = 'Ler menos';
+                } else {
+                    this.textContent = 'Ler mais';
+                }
+            });
+        });
+    }
     
     // ===== NOTIFICAÇÕES E FEEDBACK =====
     
@@ -709,4 +729,6 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     console.log('Inicialização do site GIPACE concluída!');
+
 });
+
