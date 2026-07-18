@@ -1,0 +1,992 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header e Menu */
+        header {
+            background-color: #8e0404;
+            color: white;
+            padding: 0px 0; /* ajusta o tamanho do menu*/
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 120px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ecf0f1;
+        }
+
+        .menu-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .menu-nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-nav a:hover {
+            background-color: #ffffff;
+            color: #8e0404;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Seção principal */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(178deg,  #54bb7b, #1b7f48);
+            color: white;
+            text-align: left;
+            border-radius: 0px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 1200px;
+    
+        }
+
+        /* Seção dos eixos temáticos */
+        .carrossel-section {
+            background: linear-gradient(180deg, #dfaa5a, #54bb7b);
+            padding: 100px 0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .carrossel-section h2 {
+            color: white;
+            margin-bottom: 50px;
+            font-size: 50px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .carrossel-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* container flex que coloca a seta esquerda, os slides e a seta direita na mesma linha */
+        .carousel-container {
+            display: flex;
+            align-items: center; /* Alinha setas e slides centralizados verticalmente */
+            justify-content: center;
+            gap: 20px; /* Distância das setas em relação ao box do slide */
+            width: 100%;
+        }
+
+        .carousel-track-wrapper {
+            flex: 1; /* Faz a caixa do slide ocupar todo o espaço do meio */
+            overflow: hidden;
+            border-radius: 2rem;
+            background: rgba(10, 25, 35, 0.1);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5), 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.15, 1.05);
+        }
+
+        /* Cada slide */
+        .slide {
+            flex: 0 0 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        /* Estilo dos cards dos eixos */
+        .bloco {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 12px 25px -8px rgba(0,40,60,0.25),
+                        0 0 0 1px rgba(255,255,255,0.8) inset;
+            transition: transform 0.2s ease, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 280px;
+        }
+
+        .bloco:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .bloco h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #8e0404;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .bloco p {
+            font-size: 0.95rem;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* Botões de navegação (Setas redondas nas laterais) */
+        .nav-btn {
+            background: white;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 2.2rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+            color: #1b7f48;
+            user-select: none;
+            flex-shrink: 0; /* Garante que a seta não amasse em telas médias */
+        }
+
+        .nav-btn:hover {
+            background: #1b7f48;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Indicadores (Bolinhas de controle) */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .indicator {
+            width: 50px;
+            height: 8px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            width: 70px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+
+        /* ==========================================================================
+           NOVA SEÇÃO CRONOGRAMA (DATAS IMPORTANTES)
+           ========================================================================== */
+        .cronograma {
+            background: linear-gradient(180deg, #8e0404, #dfaa5a);
+            padding: 100px 0; /* Ajustado padding excessivo de 110px sem largura em telas menores */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .cronograma-container {
+            max-width: 900px; /* Deixa o conteúdo centralizado e elegante */
+            margin: 0 auto;
+        }
+
+        .cronograma h2 {
+            color: #ffffff;
+            margin-bottom: 60px;
+            font-size: 2.8rem;
+            position: relative;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Correção da linha centralizada e responsiva */
+        .cronograma h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 4px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Grid vertical para os itens */
+        .cronograma-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Card estilo linha do tempo */
+        .cronograma-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
+            padding: 20px 30px;
+            gap: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .cronograma-item:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Badge da data na esquerda */
+        .cronograma-badge {
+            background-color: white;
+            color: #8e0404;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Cor em destaque para a data do evento principal */
+        .cronograma-badge.destaque {
+            background-color: #dfaa5a;
+            color: #580303;
+        }
+
+        .cronograma-badge i {
+            font-size: 1.1rem;
+        }
+
+        /* Textos explicativos na direita */
+        .cronograma-descricao {
+            flex: 1;
+            text-align: left;
+        }
+
+        .cronograma-descricao h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .cronograma-descricao p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Responsividade para Telas Menores (como celulares) */
+        @media (max-width: 768px) {
+            .cronograma-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+                padding: 20px;
+            }
+            .cronograma-badge {
+                width: 100%;
+            }
+            .cronograma-descricao {
+                text-align: center;
+                width: 100%;
+            }
+            .cronograma h2 {
+                font-size: 2rem;
+            }
+        }
+
+/* ==========================================================================
+           NOVA SEÇÃO DE DOWNLOADS (ARQUIVOS PARA BAIXAR)
+           ========================================================================== */
+        .download {
+            padding: 100px 0; /* Reduzido o padding exagerado de 250px para respirar melhor */
+            background: linear-gradient(180deg, #1b7f48, #25ac62, #dfaa5a);
+            color: white;
+        }
+
+        .download-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .download h1 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* Container do Grid */
+        .arquivos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; /* Espaçamento entre os cards */
+            justify-content: center;
+        }
+
+        /* Estilo do Card Individual */
+        .arquivo-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .arquivo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Ícones dentro dos cards */
+        .card-icon {
+            font-size: 2rem;
+            width: 20px; 
+            height: 55px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Cores específicas para cada tipo de ícone */
+        .card-icon.docx {
+            background-color: rgba(43, 108, 176, 0.1);
+            color: #2b6cb0;
+        }
+
+        .card-icon.pdf {
+            background-color: rgba(229, 62, 62, 0.1);
+            color: #e53e3e;
+        }
+
+        .card-icon.pptx {
+            background-color: rgba(221, 107, 32, 0.1);
+            color: #dd6b20;
+        }
+
+        .card-icon.link {
+            background-color: rgba(49, 151, 149, 0.1);
+            color: #319795;
+        }
+
+        /* Textos dentro do Card */
+        .card-info {
+            flex-grow: 1;
+        }
+
+        .card-info h3 {
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 4px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .card-info p {
+            font-size: 0.85rem;
+            color: #718096;
+            margin: 0;
+            text-align: left;
+            text-shadow: none;
+        }
+
+        /* Botões de Ação Dinâmicos */
+        .btn-download, .btn-visualizar {
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.2s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        /* Botão de Download (Vinho correspondente à sua paleta anterior) */
+        .btn-download {
+            background-color: #8e0404;
+            color: white;
+        }
+
+        .btn-download:hover {
+            background-color: #d34a05;
+            transform: scale(1.03);
+        }
+
+        /* Botão de Visualizar (Verde correspondente à sua paleta anterior) */
+        .btn-visualizar {
+            background-color: #1b7f48;
+            color: white;
+        }
+
+        .btn-visualizar:hover {
+            background-color: #25ac62;
+            transform: scale(1.03);
+        }
+
+        /* Ajuste de responsividade rápida no CSS existente para o grid */
+        @media (max-width: 640px) {
+            .arquivo-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .card-info p {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .btn-download, .btn-visualizar {
+                width: 100%;
+            }
+        }
+
+
+        /* Seção de inscrição */
+        .inscricao {
+            background: linear-gradient(180deg, #dfaa5a, #d34a05, #8e0404);
+            border-radius: 1px;
+            padding: 150px;
+            margin-bottom: 0px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .inscricao h2 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .inscricao h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #8e0404;
+            border-radius: 2px;
+        }
+
+        .opcoes-inscricao {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .opcao {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .opcao:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+            border-color: #8e0404;
+        }
+
+        .opcao h3 {
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .opcao p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .btn-inscricao {
+            display: inline-block;
+            background-color: #8e0404;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-inscricao:hover {
+            background-color: #d34a05;
+            transform: scale(1.05);
+        }
+
+        /* Seção dos eixos temáticos */
+        .carrossel-container {
+            background: linear-gradient(180deg, #dfaa5a, #54bb7b);
+            border-radius: 1px;
+            padding: 180px 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .carrossel-container h2 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 50px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .carrossel-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* estrutura do carrossel */
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .carousel-track-wrapper {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 2rem;
+            background: rgba(10, 25, 35, 0.1);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5), 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.15, 1.05);
+        }
+
+        /* cada slide ocupa 100% da largura do container */
+        .slide {
+            flex: 0 0 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;  /* dois blocos iguais */
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        /* estilo dos cards (blocos) */
+        .bloco {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 12px 25px -8px rgba(0,40,60,0.25),
+                        0 0 0 1px rgba(255,255,255,0.8) inset,
+                        0 -4px 0 rgba(0,0,0,0.05) inset;
+            transition: transform 0.2s ease, box-shadow 0.3s;
+            border: 1px solid rgba(255,255,255,0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .bloco:hover {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: 0 22px 30px -10px #1e3f55, 0 0 0 2px rgba(255,255,255,0.5) inset;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* conteúdo  */
+        .bloco h3 {
+            font-size: 25px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #8e0404, #dfaa5a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+            line-height: 1.1;
+        }
+
+        .bloco .tag {
+            background: #54bb7b;
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            align-self: flex-start;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+            border: 1px solid #cae9ff;
+        }
+
+        .bloco p {
+            font-size: 1rem;
+            color: #414b1f;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* botões de navegação */
+        .nav-btn {
+            background: white;
+            border: none;
+            width: 52px;
+            height: 52px;
+            border-radius: 60px;
+            font-size: 2rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,40,60,0.25), 0 0 0 1px rgba(255,255,255,0.9);
+            transition: 0.15s;
+            color: #1b7f48;
+            line-height: 1;
+            user-select: none;
+            z-index: 5;
+        }
+
+        .nav-btn:hover {
+            background: #54bb7b;
+            color: white;
+            transform: scale(1.08);
+            box-shadow: 0 10px 20px #1b7f48;
+        }
+
+        .nav-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* indicadores (bolinhas) */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .indicator {
+            width: 60px;
+            height: 10px;
+            border-radius: 20px;
+            background: #1b7f48;
+            border: 1px solid rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .indicator.active {
+            background: #54bb7b;
+            width: 90px;
+            border-color: #ffffff;
+            box-shadow: 0 0 12px #1b7f48;
+        }
+
+        .indicator:hover {
+            background: #1b7f48;
+        }
+
+        /* Seção cronograma */
+        .cronograma {
+            background: linear-gradient(180deg, #8e0404, #dfaa5a);
+            border-radius: 1px;
+            padding: 110px;
+            margin-bottom: 0px;
+            box-shadow: 0 6px 15px rgb(255, 249, 249);
+            
+        }
+
+        .cronograma h2 {
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-size: 55px;
+            position: relative;
+            align-items: center;
+            padding-bottom: 0px;
+            text-align: center;
+        }
+
+        /*o tracinho que fica embaixo do datas importantes*/
+        .cronograma h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 35%;
+            width: 290px;
+            height: 4px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        .cronograma-item {
+            display: flex;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cronograma-data {
+            flex: 0 0 150px;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        .cronograma-descricao {
+            flex: 1;
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        
+        footer {
+            background-color: #8e0404;
+            color: white;
+            padding: 50px 0 10px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-column p, .footer-column a {
+            color: white;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #95a5a6;
+            font-size: 14px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .bloco-tematico {
+                flex: 0 0 33.333%;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-nav {
+                position: fixed;
+                top: 140px;
+                left: -100%;
+                width: 100%;
+                background-color: #8e0404;
+                padding: 20px;
+                transition: left 0.3s ease;
+                z-index: 99;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .menu-nav.active {
+                left: 0;
+            }
+            
+            .menu-nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .opcoes-inscricao {
+                gap: 20px;
+            }
+            
+            .bloco-tematico {
+                flex: 0 0 50%;
+            }
+            
+            .cronograma-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .inscricao, .cronograma, .carrossel-container {
+                padding: 30px 20px;
+            }
+            
+            .opcao {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .bloco-tematico {
+                flex: 0 0 100%;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+        }
