@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento - Página Principal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header com Menu -->
+    <header>
+        <div class="container menu-container">
+            <div class="logo-container">
+                <img src="lohoheader.png" alt="Logo do Evento" class="logo-img">
+            </div>
+            
+            <!-- Botão Hamburguer -->
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <!-- Menu Desktop -->
+            <nav class="menu-nav desktop-menu" id="menuNav">
+                <ul>
+                    <li><a href="#resumo" class="menu-link" data-target="resumo">Início</a></li>
+                    <li class="menu-divider">|</li>
+                    <li><a href="#inscricao" class="menu-link" data-target="inscricao">Inscrição</a></li>
+                    <li class="menu-divider">|</li>
+                    <li><a href="detalhes.html" class="menu-link">Mais detalhes</a></li>
+                    <li class="menu-divider">|</li>
+                    <li><a href="publicacoes.html" class="menu-link">Publicações</a></li>
+                    <li class="menu-divider">|</li>
+                    <li><a href="gipace.html" class="menu-link">Especialização</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Menu Mobile (overlay) -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <span class="mobile-menu-title">MENU</span>
+                    <button class="mobile-menu-close" id="menuClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <nav class="mobile-menu-nav">
+                    <ul>
+                        <li><a href="#resumo" class="mobile-link active" data-target="resumo">Início</a></li>
+                        <li><a href="#inscricao" class="mobile-link" data-target="inscricao">Inscrição</a></li>
+                        <li><a href="detalhes.html" class="mobile-link">Mais detalhes</a></li>
+                        <li><a href="publicacoes.html" class="mobile-link">Publicações</a></li>
+                        <li><a href="gipace.html" class="mobile-link">Especialização</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="apresentacao-evento" id="resumo">
+        <div class="container">
+            <div class="apresentacao-card">
+                <h1>V DILAE</h1>
+                <h2>V Diálogos Interculturais em Linguagens, Artes e Educação</h2>
+                
+                <p class="evento-descricao">
+                    O <strong>V Diálogos Interculturais em Linguagens, Artes e Educação (DILAE)</strong> tem como objetivo promover a discussão e integração de conhecimentos e saberes acerca de fenômenos relacionados às Linguagens, Artes e Educação de forma interdisciplinar no contexto pan-amazônico.
+                </p>
+
+                <div class="organizadores-container">
+                    <h3>REALIZAÇÃO & PARCERIAS</h3>
+                    <div class="organizadores-tags">
+                        <span class="tag-org">GIPACE</span>
+                        <span class="tag-org">Especialização LAFD (IFPA)</span>
+                        <span class="tag-org">Grupo Mulheres Amazônidas</span>
+                        <span class="tag-org">MALALAS (UFPA)</span>
+                        <span class="tag-org">OLEPS (UFPA)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Inscrição -->
+    <section class="inscricao" id="inscricao">
+        <div class="container">
+            <h2>DESEJA SE INSCREVER?</h2>
+            <div class="opcoes-inscricao">
+                <div class="opcao">
+                    <div class="opcao-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Como Participante</h3>
+                    <p>Participe ativamente do evento com acesso a todas as palestras, workshops e materiais exclusivos.</p>
+                    <a href="#" class="btn-inscricao">Inscrever-se <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="opcao">
+                    <div class="opcao-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Como Ouvinte</h3>
+                    <p>Acompanhe as palestras principais e tenha acesso aos materiais de apresentação.</p>
+                    <a href="#" class="btn-inscricao">Inscrever-se <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Cronograma -->
+    <section class="cronograma" id="cronograma">
+        <div class="container cronograma-container">
+            <h2>DATAS IMPORTANTES</h2>
+            
+            <div class="cronograma-timeline">
+                <div class="cronograma-item">
+                    <div class="cronograma-badge destaque">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <span class="cronograma-data">20/07 à 20/08</span>
+                    </div>
+                    <div class="cronograma-descricao">
+                        <h3>PERÍODO DE INSCRIÇÕES</h3>
+                    </div>
+                </div>
+
+                <div class="cronograma-item">
+                    <div class="cronograma-badge destaque">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <span class="cronograma-data">20/07 à 20/08</span>
+                    </div>
+                    <div class="cronograma-descricao">
+                        <h3>SUBMISSÃO DE TRABALHOS</h3>
+                    </div>
+                </div>
+
+                <div class="cronograma-item">
+                    <div class="cronograma-badge destaque">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span class="cronograma-data">21/09 À 25/09</span>
+                    </div>
+                    <div class="cronograma-descricao">
+                        <h3>REALIZAÇÃO DO EVENTO</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="carrossel-section" id="tematico">
+        <div class="container">
+            <h2>EIXOS TEMÁTICOS</h2>
+
+            <div class="carousel-container"> 
+                <button class="nav-btn" id="prevBtn" aria-label="Slide anterior">‹</button>
+
+                <div class="carousel-track-wrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- SLIDE 1 -->
+                        <div class="slide" data-slide="1">
+                            <div class="bloco">
+                                <h3>1. Interculturalidade, Educação e Inclusão na Pan-Amazônia</h3>
+                                <p>Este eixo acolhe pesquisas sobre práticas pedagógicas inclusivas e diálogos interculturais no contexto da Pan-Amazônia. Priorizam-se investigações que debatam a valorização de saberes tradicionais, as políticas públicas de acesso à educação e a garantia de direitos e equidade para os povos originários e comunidades da região.</p>
+                            </div>
+                            <div class="bloco">
+                                <h3>2. Discursos contemporâneos na Amazônia: gênero, políticas e resistências</h3>
+                                <p>O foco deste eixo está em investigações que analisem discursos sobre relações de gênero, sexualidades, dinâmicas de resistência comunitária e a força de vozes marginalizadas frente às transformações políticas e territoriais da região.</p>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 2 -->
+                        <div class="slide" data-slide="2">
+                            <div class="bloco">
+                                <h3>3. Artes, interculturalidades e Processos de criação na Pan-Amazônia</h3>
+                                <p>Este eixo acolhe investigações sobre as manifestações artísticas, estéticas e os processos criativos na Pan-Amazônia sob uma perspectiva intercultural. Valorizam-se estudos que debatam as artes visuais, cênicas e populares, o diálogo entre saberes tradicionais e contemporâneos, e o papel da arte como expressão de identidade e resistência regional.</p>
+                            </div>
+                            <div class="bloco">
+                                <h3>4. Imaginários e narrativas amazônicas: culturas, memorias e identidades</h3>
+                                <p>Este eixo acolhe pesquisas que investigam as diversas formas de representação, simbologias e tradições orais e escritas que moldam a Amazônia. O foco está em estudos sobre a construção de memórias coletivas, a preservação de identidades locais e a circulação de saberes que tecem o imaginário social e cultural da região.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="nav-btn" id="nextBtn" aria-label="Próximo slide">›</button>
+            </div>
+
+            <div class="carousel-indicators" id="indicators">
+                <span class="indicator active" data-index="0"></span>
+                <span class="indicator" data-index="1"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="mapbox"></div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39885630163608703!2d-48.46026594357269!3d-1.437298296395028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48c12e611982f%3A0x5ace4d45a86e975d!2sIFPA%20-%20Instituto%20Federal%20de%20Educa%C3%A7%C3%A3o%2C%20Ci%C3%AAncia%20e%20Tecnologia%20do%20Par%C3%A1%2C%20Campus%20Bel%C3%A9m!5e0!3m2!1spt-BR!2sbr!4v1724461632083!5m2!1spt-BR!2sbr" width="300px" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <p style="color: #fff;">Instituto Federal do Pará - Campus Belém</p>
+                </div>
+                <div class="footer-column">
+                    <h3>MAIS INFORMAÇÕES</h3>
+                    <a href="detalhes.html">Quero participar</a>
+                    <a href="publicacoes.html">Publicações</a>
+                    <a href="gipace.html">Especialização</a>
+                    <a href="https://www.instagram.com/dilaeifpa/">Redes sociais</a>
+                </div>
+                <div class="footer-column">
+                    <h3>CONTATO</h3>
+                    <p>GIPACE: gipaceifpa@gmail.com</p>
+                    <p>ESPECIALIZAÇÂO: esp.lafd@ifpa.edu.br</p>
+                    <p>DILAE: dilaeifpa@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
