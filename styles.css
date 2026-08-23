@@ -906,6 +906,13 @@ footer {
     color: white;
 }
 
+.creditos {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+}
+
 .social-links {
     display: flex;
     gap: 15px;
